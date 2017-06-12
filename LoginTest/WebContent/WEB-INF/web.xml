@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+    version="2.5">
+    <servlet>
+		<servlet-name>fornecedor</servlet-name>
+		<servlet-class>br.com.dellectus.servlets.FornecedorController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fornecedor</servlet-name>
+		<url-pattern>/FornecedorController</url-pattern>
+    </servlet-mapping>
+	
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>com.amzi.servlets.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+		<servlet-name>employee</servlet-name>
+		<servlet-class>br.com.dellectus.servlets.EmployeeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>employee</servlet-name>
+		<url-pattern>/employeeController.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>categoria</servlet-name>
+		<servlet-class>br.com.dellectus.servlets.CategoriaController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>categoria</servlet-name>
+		<url-pattern>/CategoriaController/*</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>EmployeeAdd.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

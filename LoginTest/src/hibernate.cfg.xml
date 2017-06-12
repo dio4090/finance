@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/finance</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">Dio4090</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.hbm2ddl.auto">update</property> 
+		
+    	<mapping class="br.com.dellectus.employee.EmployeeDetails"/>
+		<mapping class="br.com.dellectus.usuario.Usuario"/>
+		<mapping class="br.com.dellectus.categoria.Categoria"/>
+		<mapping class="br.com.dellectus.cliente.Cliente"/>
+		<mapping class="br.com.dellectus.empresaServico.EmpresaServico"/>
+		<mapping class="br.com.dellectus.estoque.Estoque"/>
+		<mapping class="br.com.dellectus.fornecedor.Fornecedor"/>
+		<mapping class="br.com.dellectus.imposto.Imposto"/>
+		<mapping class="br.com.dellectus.juros.Juros"/>
+		<mapping class="br.com.dellectus.moduloCustoDespesa.ModuloCustoDespesa"/>
+		<mapping class="br.com.dellectus.moduloPagamento.ModuloPagamento"/>
+		<mapping class="br.com.dellectus.moduloRecebimento.ModuloRecebimento"/>
+		<mapping class="br.com.dellectus.notaFiscal.NotaFiscal"/>
+		<mapping class="br.com.dellectus.produto.Produto"/>
+		<mapping class="br.com.dellectus.servico.Servico"/>
+		<mapping class="br.com.dellectus.unidade.Unidade"/>
+  </session-factory>
+</hibernate-configuration>
