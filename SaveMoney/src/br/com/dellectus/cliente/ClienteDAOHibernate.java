@@ -27,26 +27,39 @@ public class ClienteDAOHibernate implements ClienteDAO {
 	    } finally {
 
 	     if (!tx.wasCommitted()) {
-	     tx.rollback();
+	    	 tx.rollback();
 	     }//not much doing but a good practice
-	     session.flush(); //this is where I think things will start working.
-	     session.close();
+		     session.flush(); //this is where I think things will start working.
+		     session.close();
 	    }
 	}
 
 	@Override
 	public void atualizar(Cliente c) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        Cliente newCliente = (Cliente)session.load(Cliente.class, c.getCliente_id());
-        newCliente.setCliente_id(c.getCliente_id());
-        newCliente.setRazao_social(c.getRazao_social());
-        newCliente.setCpf(c.getCpf());
-        newCliente.setEndereco(c.getEndereco());
-        newCliente.setTelefone(c.getTelefone());
-        session.update(newCliente);
-        transaction.commit();
-        session.close(); 
+	    Session session = null;
+	    Transaction tx=null;
+		 try {
+			 System.out.println("");
+			 System.out.println("-------------STATUS-------------");
+			 System.out.println("ID: "+c.getCliente_id());
+			 System.out.println("Nome: "+c.getRazao_social());
+			 System.out.println("CPF:"+c.getCpf());
+			 System.out.println("Endereco:"+c.getEndereco());
+			 System.out.println("Telefone: "+c.getTelefone());
+			 System.out.println("");
+			 
+			 session = HibernateUtil.getSessionFactory().openSession();
+		     tx = session.beginTransaction();
+	     	 session.update(c);
+		     tx.commit();
+		 }
+		 catch (Exception e) {
+		     if (tx!=null) tx.rollback();
+		     throw e;
+		 }
+		 finally {
+		     session.close();
+		 }
 	}
 
 	@Override
