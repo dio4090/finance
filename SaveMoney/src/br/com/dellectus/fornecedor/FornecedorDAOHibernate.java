@@ -11,20 +11,20 @@ import br.com.dellectus.util.HibernateUtil;
 
 
 public class FornecedorDAOHibernate implements FornecedorDAO {
-		@Override
-		public void salvar(Fornecedor f) {
-			
-			try {
-		        Session session = null;
-		        session = HibernateUtil.getSessionFactory().openSession();
-		        Transaction transaction = session.beginTransaction();
-		        session.save(f);
-		        transaction.commit();
-		        session.close();
-		        
-			} catch(Exception e) {
-				System.out.println("Erro: " + e.getMessage());
-			}
+	
+	@Override
+	public void salvar(Fornecedor f) {	
+		try {
+	        Session session = null;
+	        session = HibernateUtil.getSessionFactory().openSession();
+	        Transaction transaction = session.beginTransaction();
+	        session.save(f);
+	        transaction.commit();
+	        session.close();
+	        
+		} catch(Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 
 	@Override

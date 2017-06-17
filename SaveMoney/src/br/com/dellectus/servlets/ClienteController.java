@@ -27,16 +27,14 @@ public class ClienteController extends HttpServlet {
         	
             String cRazaoSocial = request.getParameter("cRazaoSocial");
             String cCpf = request.getParameter("cCpf");
-            String cEmail = request.getParameter("cEmail");
             String cEndereco = request.getParameter("cEndereco");
             String cTelefone = request.getParameter("cTelefone");
             
             
             
             cliente.setCpf(cCpf);
-            cliente.setRazao_social(cRazaoSocial);;
-            //cliente.setEmail(cEmail);;
-            cliente.setEndereco(cEndereco);;
+            cliente.setRazao_social(cRazaoSocial);
+            cliente.setEndereco(cEndereco);
             cliente.setTelefone(cTelefone);
             
             clienteDaoHibernate.salvar(cliente);

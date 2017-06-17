@@ -301,6 +301,9 @@
                                     <a href="produto.jsp">Produto</a>
                                 </li>
                                 <li>
+                                    <a href="cliente.jsp">Cliente</a>
+                                </li>
+                                <li>
                                     <a href="categoria.jsp">Categoria</a>
                                 </li>
                                 <li>

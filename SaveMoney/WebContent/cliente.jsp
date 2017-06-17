@@ -30,13 +30,6 @@
     <!-- JQuery -->
     <script src="jquery/jquery-1.5.2.min.js"></script>
     <script src="jquery/jquery.maskedinput-1.3.min.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     
      <!-- MÁSCARA -->
   <script>
@@ -431,20 +424,15 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id="add">
-                        <h1 class="page-header">Adicionar Fornecedor</h1>
+                        <h1 class="page-header">Adicionar Cliente</h1>
                         <form action="ClienteController" method="GET">
                            <div class="form-group">
                                <label>Razão Social:</label>
-                               <input class="form-control" placeholder="Nome da Empresa" name="cRazaoSocial" style="width: 300px;">
+                               <input class="form-control" placeholder="Nome do Cliente" name="cRazaoSocial" style="width: 300px;">
                            </div>
                            <div class="form-group">
                                <label>CPF:</label>
-                               <input class="form-control" placeholder="000.000.000-00" name="cCpf" id="fCnpj" style="width: 300px;">
-                           </div>
-                           <label>Endereco:</label>
-                           <div class="form-group input-group">
-                               <span class="input-group-addon">@</span>
-                               <input type="text" class="form-control" placeholder="exemplo@gmail.com" name="cEmail" style="width: 300px;">
+                               <input class="form-control" placeholder="000.000.000-00" name="cCpf" id="cCpf" style="width: 300px;">
                            </div>
                            <div class="form-group">
                                <label>Endereco:</label>
@@ -452,10 +440,10 @@
                            </div>
                            <div class="form-group">
                                <label>Telefone:</label>
-                               <input class="form-control" placeholder="(00)00000.0000" name="cTelefone" id="fTelefone" style="width: 300px;">
+                               <input class="form-control" placeholder="(00)00000.0000" name="cTelefone" id="cTelefone" style="width: 300px;">
                            </div>
                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" name="addFornecedor" value="Add">
+                                <input type="submit" class="btn btn-primary" name="addCliente" value="Add">
                            </div>
                         </form>
                         

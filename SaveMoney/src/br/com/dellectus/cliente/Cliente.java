@@ -26,7 +26,7 @@ public class Cliente {
 	@OneToMany(mappedBy="cliente", targetEntity = NotaFiscal.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<NotaFiscal> notaFiscal;
 	private String razao_social;
-	@Column(length=11)
+	@Column(length=20)
 	private String cpf;
 	@Column(length=15)
 	private String telefone;

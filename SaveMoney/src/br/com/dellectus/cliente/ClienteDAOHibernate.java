@@ -10,31 +10,43 @@ import org.hibernate.Transaction;
 import br.com.dellectus.util.HibernateUtil;
 
 public class ClienteDAOHibernate implements ClienteDAO {
-	private Session session;
 	
-	public void setSession(Session session) {
-		this.session = session;
-	}
-
 	@Override
 	public void salvar(Cliente c) {
-		try {
-	        Session session = null;
-	        session = HibernateUtil.getSessionFactory().openSession();
-	        Transaction transaction = session.beginTransaction();
-	        session.save(c);
-	        transaction.commit();
-	        session.close();
-	        
-			} catch(Exception e) {
-				System.out.println("Erro: " + e.getMessage());
-			}
-		
+	    Session session = null;
+	    Transaction tx=null;
+	    try {
+	        //session = this.sessionFactory.openSession();
+	    	session = HibernateUtil.getSessionFactory().openSession();
+	        tx = session.beginTransaction();
+	        session.persist(c);
+	        tx.commit();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+
+	     if (!tx.wasCommitted()) {
+	     tx.rollback();
+	     }//not much doing but a good practice
+	     session.flush(); //this is where I think things will start working.
+	     session.close();
+	    }
 	}
 
 	@Override
-	public void atualizar(Cliente cliente) {
-		this.session.update(cliente);
+	public void atualizar(Cliente c) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Cliente newCliente = (Cliente)session.load(Cliente.class, c.getCliente_id());
+        newCliente.setCliente_id(c.getCliente_id());
+        newCliente.setRazao_social(c.getRazao_social());
+        newCliente.setCpf(c.getCpf());
+        newCliente.setEndereco(c.getEndereco());
+        newCliente.setTelefone(c.getTelefone());
+        session.update(newCliente);
+        transaction.commit();
+        session.close(); 
 	}
 
 	@Override
