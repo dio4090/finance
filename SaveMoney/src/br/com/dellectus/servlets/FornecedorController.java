@@ -20,6 +20,11 @@ public class FornecedorController extends HttpServlet {
 	FornecedorDAOHibernate fornecedorDaoHibernate = new FornecedorDAOHibernate();
 	FornecedorDAO fornecedorDAO;
 	
+	private void listFornecedor(HttpServletRequest request) {
+        List<Fornecedor> fornecedorList = new ArrayList();
+        fornecedorList = fornecedorDaoHibernate.listar();
+        request.setAttribute("fornecedorList", fornecedorList);
+	}
 
 	  
     @Override
@@ -32,9 +37,7 @@ public class FornecedorController extends HttpServlet {
             String fEmail = request.getParameter("fEmail");
             String fEndereco = request.getParameter("fEndereco");
             String fTelefone = request.getParameter("fTelefone");
-            
-            
-            
+        
             fornecedor.setCnpj(fCnpj);
             fornecedor.setRazao_social(fRazaoSocial);;
             fornecedor.setEmail(fEmail);;
@@ -53,10 +56,9 @@ public class FornecedorController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         if(request.getParameter("showFornecedor")!=null){
-            List<Fornecedor> fornecedorList = new ArrayList();
-            fornecedorList = fornecedorDaoHibernate.listar();
-            request.setAttribute("fornecedorList", fornecedorList);
+         if(request.getParameter("showFornecedor")!=null) {
+        	listFornecedor(request);
+        	
             RequestDispatcher rd = request.getRequestDispatcher("show-fornecedor.jsp");
             rd.forward(request, response);
         }
@@ -69,8 +71,17 @@ public class FornecedorController extends HttpServlet {
              String fEndereco = request.getParameter("fEndereco");
              String fTelefone = request.getParameter("fTelefone");
              String fnumberupdate = request.getParameter("fnumberupdate");
+             
+             fornecedor.setFornecedor_id(id1);
+             fornecedor.setCnpj(fCnpj);
+             fornecedor.setRazao_social(fRazaoSocial);;
+             fornecedor.setEmail(fEmail);;
+             fornecedor.setEndereco(fEndereco);;
+             fornecedor.setTelefone(fTelefone);
+             
              fornecedorDaoHibernate.atualizar(fornecedor);
              
+             listFornecedor(request);
              RequestDispatcher rd = request.getRequestDispatcher("show-fornecedor.jsp");
              rd.forward(request, response);
              
@@ -80,7 +91,9 @@ public class FornecedorController extends HttpServlet {
              int id2 = Integer.parseInt(request.getParameter("id"));
              fornecedor.setFornecedor_id(id2);
              fornecedorDaoHibernate.excluir(fornecedor);
-              RequestDispatcher rd = request.getRequestDispatcher("show-fornecedor.jsp");
+             
+             listFornecedor(request);
+             RequestDispatcher rd = request.getRequestDispatcher("show-fornecedor.jsp");
             rd.forward(request, response);
          }
       

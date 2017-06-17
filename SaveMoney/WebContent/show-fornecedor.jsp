@@ -38,7 +38,19 @@
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+	<!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <script src="jquery/jquery-1.5.2.min.js"></script>
+    <script src="jquery/jquery.maskedinput-1.3.min.js"></script>
+
+     <!-- MÁSCARA -->
+  <script>
+      jQuery(function($){
+       $("#fTelefone").mask("(99)99999-9999");
+       $("#fCnpj").mask("99.999.999/9999-99");
+      });
+  </script>
     
     <script>
     $(document).ready(function(){

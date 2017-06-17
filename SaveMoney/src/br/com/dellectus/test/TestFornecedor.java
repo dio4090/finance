@@ -14,7 +14,7 @@ public class TestFornecedor {
 	
 	
 	@Test
-	public void cadastroFornecedor() {
+	public void cadastrarFornecedor() {
 		try {			
 			fornecedor.setCnpj("317487218");
 			fornecedor.setEmail("teste3@gmail.com");
@@ -25,13 +25,29 @@ public class TestFornecedor {
 			fDao.salvar(fornecedor);
 		} catch(Exception e) {
 			System.out.println("Erro ao inserir:" + e);
+		} finally {
+			if(fornecedor != null)
+				fornecedor = new Fornecedor();
 		}
 	}
 	
 	@Test
-	public void deleteFornecedor() {
-		fornecedor.setFornecedor_id(17);
-		fDao.excluir(fornecedor);
+	public void atualizarfornecedor() {
+		try {
+			fornecedor.setFornecedor_id(3);
+			fornecedor.setCnpj("317487218");
+			fornecedor.setEmail("casa_frios@gmail.com");
+			fornecedor.setRazao_social("Casa dos Frios");
+			fornecedor.setEndereco("Rua 30");
+			fornecedor.setTelefone("2385543289");
+			
+			fDao.atualizar(fornecedor);
+		} catch(Exception e) {
+			System.out.println("Erro ao atualizar:" + e);
+		} finally {
+			if(fornecedor != null)
+				fornecedor = new Fornecedor();
+		}
 	}
 
 	
@@ -47,18 +63,21 @@ public class TestFornecedor {
 			System.out.println("Telefone: "+f.getTelefone());
 			System.out.println("Razão Social: "+f.getRazao_social());
 			System.out.println("Endereço: "+f.getEndereco());
+			
+			fornecedor.setFornecedor_id(f.getFornecedor_id());
 		}
  	}
 	
 	@Test
-	public void atualizarfornecedor() {
-		fornecedor.setFornecedor_id(3);
-		fornecedor.setCnpj("317487218");
-		fornecedor.setEmail("casa_frios@gmail.com");
-		fornecedor.setRazao_social("Casa dos Frios");
-		fornecedor.setEndereco("Rua 30");
-		fornecedor.setTelefone("2385543289");
-		
-		fDao.atualizar(fornecedor);
+	public void deleteFornecedor() {
+		try {
+			fDao.excluir(fornecedor);
+		} catch(Exception e) {
+			System.out.println("Erro ao atualizar:" + e);
+		} finally {
+			if(fornecedor != null)
+				fornecedor = new Fornecedor();
+		}
 	}
+	
 }
