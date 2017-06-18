@@ -112,7 +112,7 @@
             <div class="col-lg-8 col-lg-offset-2 animatedParent">       
                 <div class="text-center">
                     <p>
-                        Nossa missão é fornecer aos nossos cliente a melhor experiência para administrar seus gastos.
+                        Nossa missão é fornecer aos nossos clientes a melhor experiência para administrar seus gastos.
                     </p>
                     <p>
                     

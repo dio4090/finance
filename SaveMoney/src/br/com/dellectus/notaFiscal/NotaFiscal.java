@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.dellectus.caixa.Caixa;
 import br.com.dellectus.cliente.Cliente;
 import br.com.dellectus.fornecedor.Fornecedor;
 import br.com.dellectus.imposto.Imposto;
@@ -38,6 +39,9 @@ public class NotaFiscal {
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
+	@OneToOne(mappedBy="notaFiscal")
+	private Caixa caixa;
+	
 	
 	@ManyToMany
 	@JoinTable(name="nota_fiscal_produtos", 

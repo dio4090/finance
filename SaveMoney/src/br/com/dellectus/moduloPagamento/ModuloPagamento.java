@@ -22,6 +22,7 @@ public class ModuloPagamento {
 	@GeneratedValue
 	private int modulo_pagamento_id;
 	@OneToOne
+	@JoinColumn(name="nota_fiscal_id")
 	private NotaFiscal notaFiscal;
 	@ManyToOne
 	@JoinColumn(name="fornecedor_id")
