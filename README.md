@@ -1,2 +1,2 @@
 # finance
-Java Web Project using JSP an Hibernate
+Java Web Project using JSP and Hibernate
