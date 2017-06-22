@@ -21,7 +21,8 @@ public class UsuarioController extends HttpServlet {
 	
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException { 
+            throws ServletException, IOException {
+
 	}
 	
     @Override
@@ -29,21 +30,33 @@ public class UsuarioController extends HttpServlet {
             throws ServletException, IOException { 
     	loginService = new LoginService();
     	
-        String userId = request.getParameter("login");   
-        String password = request.getParameter("password");
-        
-        boolean result = loginService.authenticateUser(userId, password);
-        User user = loginService.getUserByUserId(userId);
-        if(result == true){
-            request.getSession().setAttribute("user", user);      
-            if(user.getProfile().equals("Gerente"))
-            	response.sendRedirect("home-gerente.jsp");
-            else
-            	response.sendRedirect("home-colaborador.jsp");
-        }
-        else{
-            response.sendRedirect("login.jsp");
-        }
-    	
+		if(request.getParameter("AddUsuario") != null) {
+			u = new User();
+			u.setFirstName(request.getParameter("nome"));
+			u.setPassword(request.getParameter("password"));
+			u.setUserId(request.getParameter("usuario"));
+			u.setProfile(request.getParameter("perfil"));
+			
+			uDaoHibernate.salvar(u);
+			response.sendRedirect("usuario.jsp");
+		}
+		
+		if(request.getParameter("getLogin") != null) {
+	        String userId = request.getParameter("login");   
+	        String password = request.getParameter("password");
+	        
+	        boolean result = loginService.authenticateUser(userId, password);
+	        User user = loginService.getUserByUserId(userId);
+	        if(result == true){
+	            request.getSession().setAttribute("user", user);      
+	            if(user.getProfile().equals("Gerente"))
+	            	response.sendRedirect("home-gerente.jsp");
+	            else
+	            	response.sendRedirect("home-colaborador.jsp");
+	        }
+	        else{
+	            response.sendRedirect("login.jsp");
+	        }
+		}
     }
 }

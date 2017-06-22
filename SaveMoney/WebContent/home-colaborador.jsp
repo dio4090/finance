@@ -295,25 +295,13 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Cadastros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="fornecedor.jsp">Fornecedor</a>
-                                </li>
-                                <li>
                                     <a href="produto.jsp">Produto</a>
-                                </li>
-                                <li>
-                                    <a href="cliente.jsp">Cliente</a>
                                 </li>
                                 <li>
                                     <a href="categoria.jsp">Categoria</a>
                                 </li>
                                 <li>
-                                    <a href="cliente.jsp">Categoria</a>
-                                </li>
-                                <li>
                                     <a href="estoque.jsp">Estoque</a>
-                                </li>
-                                <li>
-                                    <a href="imposto.jsp">Imposto</a>
                                 </li>
                                 <li>
                                     <a href="mod-custo-despesa.jsp">Mod Cursto Despesa</a>
@@ -332,9 +320,6 @@
                                 </li>
                                 <li>
                                     <a href="unidade.jsp">Unidade</a>
-                                </li>
-                                <li>
-                                    <a href="usuario.jsp">Usuário</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

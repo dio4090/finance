@@ -17,40 +17,43 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	}
 	
     @Override
-	public void salvar(Usuario usuario) {
+	public void salvar(User usuario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(usuario);
         transaction.commit();
         session.close();
 	}
-
-	public void atualizar(Usuario usuario) {
+    
+	@Override
+	public void atualizar(User usuario) {
 		this.session.update(usuario);
 	}
-
-	public void excluir(Usuario usuario) {
+	
+	@Override
+	public void excluir(User usuario) {
 		this.session.delete(usuario);
 	}
 
-	public Usuario carregar(Integer codigo) {
-		return (Usuario) this.session.get(Usuario.class, codigo);
+	public User carregar(Integer codigo) {
+		return (User) this.session.get(User.class, codigo);
 	}
 
-	public List<Usuario> listar() {
+	public List<User> listar() {
 		return this.session.createCriteria(Usuario.class).list();
 	}
 	
 	@Override
-	public Usuario buscarPorLogin(Integer id) {
-		Usuario u = new Usuario();
+	public User buscarPorLogin(Integer id) {
+		User u = new User();
         try {        	
         	Session session = HibernateUtil.getSessionFactory().openSession();
-            u =  (Usuario) session.get(Usuario.class, id);
+            u =  (User) session.get(User.class, id);
         } catch (Exception e) {
         	return null;
         }
         
         return u;
 	}
+
 }

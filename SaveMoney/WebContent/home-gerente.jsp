@@ -307,9 +307,6 @@
                                     <a href="categoria.jsp">Categoria</a>
                                 </li>
                                 <li>
-                                    <a href="cliente.jsp">Categoria</a>
-                                </li>
-                                <li>
                                     <a href="estoque.jsp">Estoque</a>
                                 </li>
                                 <li>
@@ -334,7 +331,7 @@
                                     <a href="unidade.jsp">Unidade</a>
                                 </li>
                                 <li>
-                                    <a href="usuario.jsp">Usu√°rio</a>
+                                    <a href="usuario.jsp">Usu·rio</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

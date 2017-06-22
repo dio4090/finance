@@ -30,12 +30,12 @@
     <!-- JQuery -->
     <script src="jquery/jquery-1.5.2.min.js"></script>
     <script src="jquery/jquery.maskedinput-1.3.min.js"></script>
-
+    
      <!-- MÁSCARA -->
   <script>
       jQuery(function($){
-       $("#fTelefone").mask("(99)99999-9999");
-       $("#fCnpj").mask("99.999.999/9999-99");
+       $("#cTelefone").mask("(99)99999-9999");
+       $("#cCpf").mask("999.999.999-99");
       });
   </script>
 
@@ -424,37 +424,38 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id="add">
-                        <h1 class="page-header">Adicionar Fornecedor</h1>
-                        <form action="FornecedorController" method="GET">
+                        <h1 class="page-header">Adicionar Cliente</h1>
+                        <form action="UsuarioController" method="POST">
                            <div class="form-group">
-                               <label>Razão Social:</label>
-                               <input class="form-control" placeholder="Nome da Empresa" name="fRazaoSocial" style="width: 300px;">
-                           </div>
-                           <div class="form-group">
-                               <label>CNPJ:</label>
-                               <input class="form-control" placeholder="00.000.000/0000-00" name="fCnpj" id="fCnpj" style="width: 300px;">
+                               <label>Nome Completo:</label>
+                               <input class="form-control" placeholder="Nome" name="nome" style="width: 300px;">
                            </div>
                            <label>E-mail:</label>
                            <div class="form-group input-group">
                                <span class="input-group-addon">@</span>
-                               <input type="text" class="form-control" placeholder="exemplo@gmail.com" name="fEmail" style="width: 300px;">
+                               <input type="text" class="form-control" placeholder="exemplo@gmail.com" name="email" type="email" style="width: 300px;">
                            </div>
                            <div class="form-group">
-                               <label>Endereco:</label>
-                               <input class="form-control" placeholder="Av. do Exemplo" name="fEndereco" style="width: 300px;">
+                               <label>Usuario:</label>
+                               <input class="form-control" placeholder="usuario" name="usuario" style="width: 300px;">
                            </div>
                            <div class="form-group">
-                               <label>Telefone:</label>
-                               <input class="form-control" placeholder="(00)00000.0000" name="fTelefone" id="fTelefone" style="width: 300px;">
+                               <label>Senha:</label>
+                               <input class="form-control" placeholder="" name="password" id="password" type="password" style="width: 300px;">
                            </div>
+                           <select name="perfil">
+							  <option value="Gerente">Gerente</option> 
+							  <option value="Financeiro" selected>Financeiro</option>
+							  <option value="Atendimento">Atendimento</option>
+							</select>
                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" name="addFornecedor" value="Add">
+                                <input type="submit" class="btn btn-primary" name="addUsuario" value="Add">
                            </div>
                         </form>
                         
-                        <form action="FornecedorController" method="POST">
+                        <form action="UsuarioController" method="POST">
                            <div>
-                                <input type="submit" class="btn btn-primary" name="showFornecedor" value="Show"> &nbsp; &nbsp;<br>
+                                <input type="submit" class="btn btn-primary" name="showUsuario" value="Show"> &nbsp; &nbsp;<br>
                            </div>
                         </form>
                     </div>
