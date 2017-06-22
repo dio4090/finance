@@ -16,11 +16,11 @@ public class ClienteDAOHibernate implements ClienteDAO {
 	    Session session = null;
 	    Transaction tx=null;
 	    try {
-	        //session = this.sessionFactory.openSession();
+	        //session = this.sessionFactory.openSession();			
 	    	session = HibernateUtil.getSessionFactory().openSession();
 	        tx = session.beginTransaction();
-	      //  session.save(c);
-	      //  tx.commit();
+	        session.save(c);
+	        tx.commit();
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -39,19 +39,11 @@ public class ClienteDAOHibernate implements ClienteDAO {
 	    Session session = null;
 	    Transaction tx=null;
 		 try {
-			 System.out.println("");
-			 System.out.println("-------------STATUS-------------");
-			 System.out.println("ID: "+c.getCliente_id());
-			 System.out.println("Nome: "+c.getRazao_social());
-			 System.out.println("CPF:"+c.getCpf());
-			 System.out.println("Endereco:"+c.getEndereco());
-			 System.out.println("Telefone: "+c.getTelefone());
-			 System.out.println("");
 			 
 			 session = HibernateUtil.getSessionFactory().openSession();
 		     tx = session.beginTransaction();
-	     	// session.update(c);
-		    // tx.commit();
+	     	 session.update(c);
+		     tx.commit();
 		 }
 		 catch (Exception e) {
 		     if (tx!=null) tx.rollback();

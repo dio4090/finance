@@ -1,3 +1,8 @@
+<%-- 
+    Document   : Success
+    Created on : 2 Oct, 2016, 12:39:19 PM
+    Author     : Admin
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" 
@@ -21,23 +26,48 @@
     <!-- MetisMenu CSS -->
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     
     <!-- JQuery -->
     <script src="jquery/jquery-1.5.2.min.js"></script>
     <script src="jquery/jquery.maskedinput-1.3.min.js"></script>
     
-     <!-- MÁSCARA -->
-  <script>
-      jQuery(function($){
-       $("#cTelefone").mask("(99)99999-9999");
-       $("#cCpf").mask("999.999.999-99");
-      });
-  </script>
+	<!-- MÁSCARA -->
+	<script>
+	    jQuery(function($){
+	     $("#cTelefone").mask("(99)99999-9999");
+	     $("#cCpf").mask("999.999.999-99");
+	    });
+	</script>
+    
+    
+    <script>
+    $(document).ready(function(){
+        $("#deleteUsuario").hide();
+         $("#updateUsuario").hide();
+        
+        $("#update").click(function(){
+            $("#updateUsuario").show();
+            $("#deleteUsuario").hide();
+        });
+        $("#delete").click(function(){
+            $("#deleteUsuario").show();
+             $("#updateUsuario").hide();
+        });
+    });
+    </script>
 
 </head>
 
@@ -275,10 +305,10 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -297,49 +327,6 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>Cadastros<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="fornecedor.jsp">Fornecedor</a>
-                                </li>
-                                <li>
-                                    <a href="produto.jsp">Produto</a>
-                                </li>
-                                <li>
-                                    <a href="categoria.jsp">Categoria</a>
-                                </li>
-                                <li>
-                                    <a href="estoque.jsp">Estoque</a>
-                                </li>
-                                <li>
-                                    <a href="imposto.jsp">Imposto</a>
-                                </li>
-                                <li>
-                                    <a href="mod-custo-despesa.jsp">Mod Cursto Despesa</a>
-                                </li>
-                                <li>
-                                    <a href="mod-recebimento.jsp">Mod Recebimento</a>
-                                </li>
-                                <li>
-                                    <a href="mod-pagamento.jsp">Mod Pagamento</a>
-                                </li>
-                                <li>
-                                    <a href="nota-fiscal.jsp">Nota Fiscal</a>
-                                </li>
-                                <li>
-                                    <a href="servico.jsp">Servico</a>
-                                </li>
-                                <li>
-                                    <a href="unidade.jsp">Unidade</a>
-                                </li>
-                                <li>
-                                    <a href="usuario.jsp">Usuário</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
                         <li>
                             <a href="tables.jsp"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
@@ -400,11 +387,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class="active" href="blank.jsp">Blank Page</a>
+                                    <a href="blank.jsp">Blank Page</a>
                                 </li>
                                 <li>
                                     <a href="login.jsp">Login Page</a>
@@ -419,55 +406,115 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12" id="add">
-                        <h1 class="page-header">Adicionar Cliente</h1>
-                        <form action="UsuarioController" method="POST">
-                           <div class="form-group">
-                               <label>Nome Completo:</label>
-                               <input class="form-control" placeholder="Nome" name="nome" style="width: 300px;">
-                           </div>
-                           <label>E-mail:</label>
-                           <div class="form-group input-group">
-                               <span class="input-group-addon">@</span>
-                               <input type="text" class="form-control" placeholder="exemplo@gmail.com" name="email" type="email" style="width: 300px;">
-                           </div>
-                           <div class="form-group">
-                               <label>Usuario:</label>
-                               <input class="form-control" placeholder="usuario" name="usuario" style="width: 300px;">
-                           </div>
-                           <div class="form-group">
-                               <label>Senha:</label>
-                               <input class="form-control" placeholder="" name="password" id="password" type="password" style="width: 300px;">
-                           </div>
-                           <select class="form-control" name="perfil" style="width: 300px;">
-							  <option value="Gerente">Gerente</option> 
-							  <option value="Financeiro" selected>Financeiro</option>
-							  <option value="Atendimento">Atendimento</option>
-							</select>
-                           <div class="form-group">
-                                <input type="submit" class="btn btn-primary" name="AddUsuario" value="Add">
-                           </div>
-                        </form>
-                        
-                        <form action="UsuarioController" method="POST">
-                           <div>
-                                <input type="submit" class="btn btn-primary" name="showUsuario" value="Show"> &nbsp; &nbsp;<br>
-                           </div>
-                        </form>
-                    </div>
-                    <!-- /.col-lg-12 -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Lista de Clientes</h1>
                 </div>
-                <!-- /.row -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Painel
+                        </div>
+                        <!-- Lista de Clientes -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>Usuario</th>
+                                        <th>Senha</th>
+                                        <th>Perfil de Acesso</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${usuarioList}" var="usuario">
+                                        <tr>
+                                            <td><c:out value="${usuario.id}"/></td>
+                                            <td><c:out value="${usuario.firstName}"/></td>
+                                            <td><c:out value="${usuario.email}"/></td>
+                                            <td><c:out value="${usuario.userId}"/></td>
+                                            <td><c:out value="${usuario.password}"/></td>
+                                            <td><c:out value="${usuario.profile}"/></td>   
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Lista de Clientes -->
+                    </div>
+                    
+	                <div class="row">
+		                <div class="col-lg-12">
+		                    <h1 class="page-header">Update or Remove</h1>
+		                </div>
+		                <!-- /.col-lg-12 -->
+	           		</div>
+                    <!-- /.panel -->
+                    <!-- /.panel2 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Alterar e Remover
+                        </div>
+                         <div class="panel-body">
+                            <!-- Update e Delete -->
+                            <div>
+                                <form action="UsuarioController" method="POST">
+                                    Update: <input type="checkbox" id="update"> Delete: <input type="checkbox" id="delete" onclick="document.getElementById('ename').disabled=this.checked;document.getElementById('enumberupdate').disabled=this.checked;"><br><br>
+                                    <select name="id">
+                                       <c:forEach items="${usuarioList}" var="usuario">
+                                           <option value="${usuario.id}">${usuario.id}</option>
+                                       </c:forEach>
+                                    </select>
+                
+                               	   <div class="form-group">
+	                               <label>Nome Completo:</label>
+	                               <input class="form-control" placeholder="Nome" name="nome" style="width: 300px;">
+		                           </div>
+		                           <label>E-mail:</label>
+		                           <div class="form-group input-group">
+		                               <span class="input-group-addon">@</span>
+		                               <input type="text" class="form-control" placeholder="exemplo@gmail.com" name="email" type="email" style="width: 300px;">
+		                           </div>
+		                           <div class="form-group">
+		                               <label>Usuario:</label>
+		                               <input class="form-control" placeholder="usuario" name="usuario" style="width: 300px;">
+		                           </div>
+		                           <div class="form-group">
+		                               <label>Senha:</label>
+		                               <input class="form-control" placeholder="" name="password" id="password" type="password" style="width: 300px;">
+		                           </div>
+		                           <select class="form-control" name="perfil" style="width: 300px;">
+									  <option value="Gerente">Gerente</option> 
+									  <option value="Financeiro" selected>Financeiro</option>
+									  <option value="Atendimento">Atendimento</option>
+									</select>
+		                           <div class="form-group">
+		                                <input type="submit" class="btn btn-primary" name="AddUsuario" value="Add">
+		                           </div>
+		                           
+		                           <div class="form-group">
+                                    <button type="submit" id="updateUsuario" name="updateUsuario"> Update</button>
+                                    <button type="submit" id="deleteUsuario" name="deleteUsuario"> Delete </button>
+	                           		</div>
+                               </form>
+                           </div>
+                           <!-- Update e Delete -->
+                         </div>
+                    </div>
+                    <!-- /.panel2 -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-        
-
 
     </div>
     <!-- /#wrapper -->
@@ -481,8 +528,22 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="vendor/metisMenu/metisMenu.min.js"></script>
 
+    <!-- DataTables JavaScript -->
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
 
 </body>
 
