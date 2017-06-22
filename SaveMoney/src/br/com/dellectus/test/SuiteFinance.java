@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
   TestCliente.class,
-  TestFornecedor.class
+  TestFornecedor.class,
+  TestLogin.class
 })
 
 public class SuiteFinance {

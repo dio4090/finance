@@ -11,22 +11,18 @@ public class TestLogin {
 	Usuario usuario = new Usuario();
 	Usuario u = new Usuario();
 	UsuarioDAOHibernate uDao = new UsuarioDAOHibernate();
-	boolean resp;
-	
-	public void TestLogin (){
-		 resp = false;
-	}
 
-	@Test
-	public void verificarLogin() {
-		u.setLogin("root");
-		usuario = uDao.buscarPorLogin(u.getLogin());
-		
-		if(usuario.getCodigo() != null)
-			resp = true;
-		
-		//Verificar o resultado esperado
-		assertEquals(true, resp);
-	}
+//	@Test
+//	public void verificarLogin() {
+//		u.setLogin("mari123");
+//		usuario = uDao.buscarPorLogin(u.getLogin());
+//		
+//		if(usuario.getUsuario_id()!= null) {
+//			System.out.println("Usuario encontrado: ");
+//			System.out.println("Email: "+usuario.getEmail());
+//			System.out.println("Senha: "+usuario.getSenha());
+//		}	
+//		
+//	}
 
 }

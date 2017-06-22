@@ -12,6 +12,7 @@
 		
     	<mapping class="br.com.dellectus.employee.EmployeeDetails"/>
 		<mapping class="br.com.dellectus.usuario.Usuario"/>
+		<mapping class="br.com.dellectus.usuario.User"/>
 		<mapping class="br.com.dellectus.caixa.Caixa"/>
 		<mapping class="br.com.dellectus.categoria.Categoria"/>
 		<mapping class="br.com.dellectus.cliente.Cliente"/>

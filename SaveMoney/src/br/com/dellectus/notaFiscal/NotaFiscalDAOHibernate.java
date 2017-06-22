@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import br.com.dellectus.imposto.Imposto;
+import br.com.dellectus.util.HibernateUtil;
 
 public class NotaFiscalDAOHibernate implements NotaFiscalDAO {
 	private Session session;
@@ -34,6 +34,19 @@ public class NotaFiscalDAOHibernate implements NotaFiscalDAO {
 	@Override
 	public List<NotaFiscal> listar() {
 		return this.session.createCriteria(NotaFiscal.class).list();
+	}
+	
+	public NotaFiscal getNotaFiscalById(Integer id) {
+		NotaFiscal nf = new NotaFiscal();
+		
+        try {
+        	Session session = HibernateUtil.getSessionFactory().openSession();
+            nf =  (NotaFiscal) session.get(NotaFiscal.class, id);
+        } catch (Exception e) {
+        	return null;
+        }
+        
+        return nf;
 	}
 
 }

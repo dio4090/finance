@@ -2,7 +2,6 @@ package br.com.dellectus.usuario;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -10,6 +9,7 @@ import br.com.dellectus.util.HibernateUtil;
 
 public class UsuarioDAOHibernate implements UsuarioDAO {
 	private Session session;
+	Usuario log = new Usuario();
 
 
 	public void setSession(Session session) {
@@ -40,11 +40,17 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	public List<Usuario> listar() {
 		return this.session.createCriteria(Usuario.class).list();
 	}
-
-	public Usuario buscarPorLogin(String login) {
-		String hql = "select u from Usuario u where u.login = :login";
-		Query consulta = this.session.createQuery(hql);
-		consulta.setString("login", login);
-		return (Usuario) consulta.uniqueResult();
+	
+	@Override
+	public Usuario buscarPorLogin(Integer id) {
+		Usuario u = new Usuario();
+        try {        	
+        	Session session = HibernateUtil.getSessionFactory().openSession();
+            u =  (Usuario) session.get(Usuario.class, id);
+        } catch (Exception e) {
+        	return null;
+        }
+        
+        return u;
 	}
 }

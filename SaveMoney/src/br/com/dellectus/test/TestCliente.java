@@ -21,7 +21,7 @@ public class TestCliente {
 			cliente.setEndereco("Rua 30");
 			cliente.setTelefone("23843289");
 			
-			cDao.salvar(cliente);
+			//cDao.salv0ar(cliente);
 		} catch(Exception e) {
 			System.out.println("Erro ao inserir:" + e);
 		} finally {

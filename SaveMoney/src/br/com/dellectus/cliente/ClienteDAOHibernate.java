@@ -19,8 +19,8 @@ public class ClienteDAOHibernate implements ClienteDAO {
 	        //session = this.sessionFactory.openSession();
 	    	session = HibernateUtil.getSessionFactory().openSession();
 	        tx = session.beginTransaction();
-	        session.persist(c);
-	        tx.commit();
+	      //  session.save(c);
+	      //  tx.commit();
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -50,8 +50,8 @@ public class ClienteDAOHibernate implements ClienteDAO {
 			 
 			 session = HibernateUtil.getSessionFactory().openSession();
 		     tx = session.beginTransaction();
-	     	 session.update(c);
-		     tx.commit();
+	     	// session.update(c);
+		    // tx.commit();
 		 }
 		 catch (Exception e) {
 		     if (tx!=null) tx.rollback();
@@ -79,6 +79,19 @@ public class ClienteDAOHibernate implements ClienteDAO {
 	        Query query = session.createQuery("From Cliente");
 	        clienteList = query.list();
 	        return clienteList;
+	}
+	
+	public Cliente getClienteById(Integer id) {
+		Cliente c = new Cliente();
+		
+        try {
+        	Session session = HibernateUtil.getSessionFactory().openSession();
+            c =  (Cliente) session.get(Cliente.class, id);
+        } catch (Exception e) {
+        	return null;
+        }
+        
+        return c;
 	}
 
 }
